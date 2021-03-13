@@ -13,6 +13,7 @@
             ideas: data.ideas,
             policies: data.policies,
             tab: 'searchbybonus',
+            searchByBonusTab: 'ideas',
             bonuses: data.ideaBonuses.sort(),
             search: {
                 bonus: searchBonus,

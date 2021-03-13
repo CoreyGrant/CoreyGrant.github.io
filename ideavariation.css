@@ -53,7 +53,8 @@ h4{
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 50%;
+    
+    font-size: 0.9rem;
 }
 .search-results-policies{
     display: flex;
@@ -61,14 +62,14 @@ h4{
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 50%;
+    
+    font-size: 0.9rem;
 }
 
 .search-result-idea{
     display: block;
-    width: calc(50% - 30px);
-    min-height: 120px;
-    max-height: 250px;
+    width: calc(25% - 30px);
+    max-height: 220px;
     margin: 15px;
     padding: 7px;
     border: 1px solid grey;
@@ -83,6 +84,7 @@ h4{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-size: 0.8rem;
 }
 
 .search-idea{
@@ -107,15 +109,53 @@ h4{
 
 .search-result-policy{
     display: block;
+    width: calc(25% - 30px);
+    max-height: 180px;
+    margin: 15px;
+    padding: 7px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    font-size: 0.8rem;
+}
+
+ul{
+    list-style: none;
+}
+
+
+.idea-groups{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    font-size: 0.8rem;
+}
+
+.idea-group{
+    display: block;
     width: calc(50% - 30px);
-    min-height: 120px;
-    max-height: 250px;
+    min-height: 220px;
+    max-height: 450px;
     margin: 15px;
     padding: 7px;
     border: 1px solid grey;
     border-radius: 2px;
 }
 
-ul{
-    list-style: none;
+.idea-group-bonuses{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.idea-group-bonus{
+    display: block;
+    width: calc(25% - 20px);
+    margin: 10px;
+    padding: 3px;
+    background-color: #111
 }
