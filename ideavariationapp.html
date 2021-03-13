@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="ideavariation.css"/>
+    </head>
+    <body>
+        <div id='app'>
+            <h1>Idea variation ideas/policies</h1>
+            <div class="row">
+                <div class="col-3">
+                    <p @click="tab = 'searchbybonus'">Search by bonus</p>
+                </div>
+                <div class="col-3">
+                    <p @click="tab = 'policiesbyideas'">Search policies by idea group</p>
+                </div>
+                <div class="col-3">
+                    <p @click="tab = 'all'">All policies and idea groups</p>
+                </div>
+            </div>
+            <div class="search row" v-if="tab == 'searchbybonus'">
+                <div class="col-6">
+                    <h2>National bonuses</h2>
+                    <div class="search-bonuses">
+                        
+                        <div class="search-bonus" v-for="bonus in bonuses" :title="getBonusDisplay(bonus)" :class="{active: search.bonus[bonus]}" @click="toggleBonusSearch(bonus)">
+                            <img v-if="false"/>
+                            <p>{{getBonusAcronym(bonus)}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="search-results">
+                        <h2>Search Results</h2>
+                        <h3>Ideas</h3>
+                        <div class="search-results-ideas">
+                            
+                            <div class="search-result-idea" v-for="idea in ideaSearchResults">
+                                <div class="d-flex flex-row justify-content-between">
+                                <h4>{{idea.name}}</h4>
+                                <h4>{{idea.category}}</h4>
+                            </div>
+                                <div class="row">
+                                    <div class="col" v-for="(bonus, index) in idea.bonuses" v-if="bonusIsSearched(bonus.bonus)">
+                                        <p>#{{index + 1}}</p>
+                                        <ul v-for="(v,k) in bonus.bonus" v-if="k != '_order'">
+                                            <li :class="{active: search.bonus[k]}" >{{k}}: {{v}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3>Policies</h3>
+                        <div class="search-results-policies">
+                            
+                            <div class="search-result-policy" v-for="policy in policySearchResults">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <h4>{{policy.name}}</h4>
+                                    <h4>{{policy.monarch}}</h4>
+                                </div>
+                                <p>{{getAllow(policy.allow)}}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <ul v-for="(bonus, index) in policy.bonuses">
+                                            <li :class="{active: search.bonus[bonus.name]}" >{{bonus.name}}: {{bonus.bonus}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="policiesbyideas" v-if="tab == 'policiesbyideas'">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Ideas</h2>
+                        <div class="ideas-search">
+                            <div class="search-idea" v-for="idea in ideas" :class="{active: search.ideas[idea.name]}" @click="toggleSearchByIdea(idea.name)">
+                                {{idea.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h2>Search Results</h2>
+                        <h3>Policies</h3>
+                        <div class="search-results-policies-by-idea">
+                            <div class="search-result-policy" v-for="policy in policyByIdeaSearchResults">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <h4>{{getAllow(policy.allow)}}</h4>
+                                    <h4>{{policy.monarchPower}}</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <ul v-for="(bonus, index) in policy.bonuses">
+                                            <li :class="{active: search.bonus[bonus.name]}" >{{bonus.name}}: {{bonus.bonus}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="all" v-if="tab == 'all'">
+                <div class="row">
+                    <div class="col-4" v-for="idea in ideas">
+                        <h4>{{idea.name}}</h4>
+                        <p>Category: {{idea.category}}</p>
+                        <div class="row">
+                            <div class="col" v-for="bonus in idea.bonuses">
+                                <p>{{bonus.name}}</p>
+                                <ul>
+                                    <li v-for="(v, k) in bonus.bonus" v-if="k != '_order'">{{k}}: {{v}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="namereplacer.js"></script>
+        <script src="dataprocessor.js"></script>
+        <script src="ideavariation.js"></script>
+    </body>
+</html>
