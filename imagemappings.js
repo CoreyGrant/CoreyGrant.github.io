@@ -59,12 +59,16 @@ function defaultMap(name){
     return name.split(' ').join('_') + ".png";
 }
 
+function format(s){
+    return s[0].toUpperCase() + s.substring(1).toLowerCase();
+}
+
 window.imageMap = function(thingToMap){
     if(monarchPowerMappings[thingToMap]){
-        return 'Icons/' + monarchPowerMappings[thingToMap];
+        return 'Icons/' + format(monarchPowerMappings[thingToMap]);
     }
     if(bonusMappings[thingToMap]){
-        return 'Icons/Bonuses/' + bonusMappings[thingToMap];
+        return 'Icons/Bonuses/' + format(bonusMappings[thingToMap]);
     }
     return 'Icons/Bonuses/' + defaultMap(thingToMap);
 }
