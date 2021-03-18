@@ -301,7 +301,8 @@ var bonusNames = {
   "yearly_harmony":"Yearly harmony increase",
   "yearly_patriarch_authority":"Yearly patriarch authority",
   "years_of_nationalism":"Years of separatism",
-  "morale_bonus_5_cultures": "Morale bonus from 5 cultures"
+  "morale_bonus_5_cultures": "Morale bonus from 5 cultures",
+  "build_cost_in_colo_nation": "Build cost in colonial nation",
 }
 
 var miscNames = {
@@ -309,7 +310,7 @@ var miscNames = {
     "age_of_reformation": "Age of reformation",
     "age_of_absolutism": "Age of absolutism",
     "age_of_revolutions": "Age of revolutions",
-    "cb_dynastie": "Dynastic CB"
+    "cb_dynastie": "Dynastic CB",
 }
 
 window.replaceName = function(s){

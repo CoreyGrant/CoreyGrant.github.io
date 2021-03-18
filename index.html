@@ -49,7 +49,7 @@
                             <div class="idea-group-bonus" v-for="(bonus, index) in idea.bonuses">
                                 <h6>{{index == 7 ? 'Bonus' : '#' + (index+1)}}</h6>
                                 <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center flex-row" v-for="(v, k) in bonus.bonus" v-if="k != '_order'" :class="{active: search.ideaBonus === k}"><img :src="getImageLink(k)" class="bonus-image"/>{{k}}: {{displayBonusVal(k, v)}}</div>
+                                    <div class="d-flex align-items-center flex-row" v-for="(v, k) in bonus.bonus" v-if="k != '_order'" :class="{active: search.ideaBonus === displayBonusName(k)}"><img :src="getImageLink(k)" class="bonus-image"/>{{displayBonusName(k)}}: {{displayBonusVal(k, v)}}</div>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center flex-row" v-for="bonus in policy.bonuses" v-if="bonus.name != '_order'" :class="{active: search.policyBonus === bonus.name}"><img :src="getImageLink(bonus.name)"class="bonus-image"/>{{bonus.name}}: {{displayBonusVal(bonus.name, bonus.bonus)}}</div>
+                                    <div class="d-flex align-items-center flex-row" v-for="bonus in policy.bonuses" v-if="bonus.name != '_order'" :class="{active: search.policyBonus === displayBonusName(bonus.name)}"><img :src="getImageLink(bonus.name)"class="bonus-image"/>{{displayBonusName(bonus.name)}}: {{displayBonusVal(bonus.name, bonus.bonus)}}</div>
                                 </div>
                             </div>
                         </div>

@@ -40,6 +40,9 @@ function parse(s){
         }
         for(var j = 0; j < line.length; j++){
             var char = line[j];
+            if(char === '#'){
+                break;
+            }
             if(char === ' ' || char === '\t'){
                 continue;
             }
@@ -131,8 +134,8 @@ function processIdeas(ideasObj){
                 });
                 var bonusNames = Object.getOwnPropertyNames(ideaPropValue);
                 for(var k = 0; k < bonusNames.length; k++){
-                    if(bonuses.indexOf(bonusNames[k]) === -1 && bonusNames[k] !== '_order'){
-                        bonuses.push(bonusNames[k]);
+                    if(bonusNames[k] !== '_order'){
+                        bonuses.push(bonusNames[k].indexOf("__") > -1 ? bonusNames[k].split("__")[0]: bonusNames[k]);
                     }
                 }
             }
@@ -140,7 +143,7 @@ function processIdeas(ideasObj){
         idea.bonuses.sort((x, y) => x.order < y.order ? -1 : 1);
         output.push(idea);
     }
-    return [output, bonuses];
+    return [output, bonuses.filter((x, i) => bonuses.indexOf(x) === i)];
 }
 
 function processPolicies(policiesObj){
@@ -172,13 +175,14 @@ function processPolicies(policiesObj){
                     'name': policyPropName,
                     'bonus': policyPropValue,
                 });
-                if(bonuses.indexOf(policyPropName) === -1){
-                    bonuses.push(policyPropName);
-                }
+                bonuses.push(policyPropName.indexOf('__') > -1
+                    ? policyPropName.startsWith.split('__')[0]
+                    : policyPropName);
             }
         }
         output.push(policy);
     }
+    bonuses = bonuses.filter((x, i) => bonuses.indexOf(x) === i);
     return [output, bonuses];
 }
 

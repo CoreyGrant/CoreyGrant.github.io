@@ -51,8 +51,12 @@
                 this.search.policyMonarch = this.search.policyMonarch === val
                     ? ''
                     : val;
+            },
+            displayBonusName(val){
+                return val.indexOf("__") > -1
+                    ? val.split('__')[0]
+                    : val;
             }
-            
         },
         computed:{
             filteredIdeas: function(){
@@ -63,8 +67,11 @@
                 var ideas = this.ideas;
                 if(activeBonusFilter.length){
                     ideas = 
-                        ideas.filter(x => x.bonuses.some(x => x.bonus[activeBonusFilter] !== undefined));
-                        
+                        ideas.filter(idea =>{
+                            var bonusNames = idea.bonuses.map(x => Object.getOwnPropertyNames(x.bonus).map(this.displayBonusName))
+                                .flat();
+                            return bonusNames.indexOf(activeBonusFilter) > -1;
+                        })
                 }
                 if(activeIdeaExclusiveCategory.length){
                     ideas = 
