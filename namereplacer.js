@@ -84,6 +84,7 @@ var ideaGroupNames = {
 }
 
 var bonusNames = {
+    "add_building": "Add building",
     "development_cost_over_25": "Devepment cost for provinces over 25 dev",
     "add_age_forcelimit_naval": "Add naval force limit per age",
     "extra_navytradition_galley": "Extra navy tradition from galleys",
@@ -327,6 +328,11 @@ window.replaceName = function(s){
 }
 
 window.formatDisplay = function(bonusName, bonusVal){
+    // should be thousand formatted
+    if(["National manpower", "Manpower per age"].indexOf(bonusName)){
+        return bonusVal * 1000;
+    }
+
     // Has decimal place but shouldnt be percentaged
     if(["Interest", "Yearly inflation reduction", "Tolerance of true faith", "Yearly devotion", "Yearly legitimacy", "Yearly republican tradition","Yearly horde unity", "Army tradition", "Global institution growth"].indexOf(bonusName) !== -1){
         return parseFloat(bonusVal).toFixed(2);

@@ -50,7 +50,7 @@ var bonusMappings = {
     "Enforce religion cost": "Cost_of_enforcing_religion_through_war.png",
     "Build cost in subject nation": "construction_cost.png",
     "Build cost in colonial nation": "construction_cost.png",
-    "Sailor maintenance modifier": "sailor_maintainance.png",
+    "Sailor maintenance modifier": "sailor_maintenance.png",
     "Add naval force limit per age": "naval_force_limit.png",
     "Extra navy tradition from galleys": "yearly_navy_tradition.png",
     "Devepment cost for provinces over 25 dev": "Development_cost.png"
