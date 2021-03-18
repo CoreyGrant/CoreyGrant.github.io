@@ -60,7 +60,9 @@ var bonusMappings = {
     "Inflationreduction": "yearly_inflation_reduction.png",
     "Extra manpower at religious war": "Triple_manpower_increase_in_religious_wars.png",
     "Yearly army professionalism": "Army_professionalism.png",
-    "Estate interaction": "Estates.png"
+    "Estate interaction": "Estates.png",
+    "Global garrison growth": "Garrison_size.png"
+    
 }
 
 function defaultMap(name){
