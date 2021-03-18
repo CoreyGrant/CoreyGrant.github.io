@@ -53,7 +53,12 @@ var bonusMappings = {
     "Sailor maintenance modifier": "sailor_maintenance.png",
     "Add naval force limit per age": "naval_force_limit.png",
     "Extra navy tradition from galleys": "yearly_navy_tradition.png",
-    "Devepment cost for provinces over 25 dev": "Development_cost.png"
+    "Devepment cost for provinces over 25 dev": "Development_cost.png",
+    "Reduced dev cost malus from nation size": "Development_cost.png",
+    "Inflationreduction": "yearly_inflation_reduction.png",
+    "Extra manpower at religious war": "Triple_manpower_increase_in_religious_wars.png",
+    "Yearly army professionalism": "Army_professionalism.png",
+    "Estate interaction": "Estates.png"
 }
 
 function defaultMap(name){

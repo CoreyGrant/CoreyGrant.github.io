@@ -87,7 +87,10 @@ var bonusNames = {
     "add_building": "Add building",
     "development_cost_over_25": "Devepment cost for provinces over 25 dev",
     "add_age_forcelimit_naval": "Add naval force limit per age",
+    "add_age_authority": "Add mandate/IA per age",
+    "extra_navytradition_heavy_ships": "Extra navy tradition from heavy ships",
     "extra_navytradition_galley": "Extra navy tradition from galleys",
+    "extra_navytradition_light_ships": "Extra navy tradition from light ships",
     "reduced_dev_malus": "Reduced dev cost malus from nation size",
     "free_cardinal": "Cardinal",
     "build_cost_in_subject_nation": "Build cost in subject nation",
@@ -155,7 +158,7 @@ var bonusNames = {
   "garrison_size": "Garrison size",
   "global_autonomy": "Autonomy modifier",
   "global_colonial_growth": "Global settler increase",
-  "global_foreign_trade_power": "Global foreign trade power",
+  "global_foreign_trade_power": "Trade power abroad",
   "global_garrison_growth": "Global garrison growth",
   "global_heretic_missionary_strength": "Missionary strength vs heretics",
   "global_institution_spread": "Global institution spread",
@@ -169,7 +172,7 @@ var bonusNames = {
   "global_religious_conversion_resistance": "Religious conversion resistance",
   "global_sailors": "National sailors",
   "global_sailors_modifier": "National sailors modifier",
-  "global_ship_cost": "Ship cost",
+  "global_ship_cost": "Ship costs",
   "global_ship_recruit_speed": "Shipbuilding time",
   "global_ship_repair": "Global ship repair",
   "global_ship_trade_power": "Ship trade power",
@@ -304,6 +307,7 @@ var bonusNames = {
   "years_of_nationalism":"Years of separatism",
   "morale_bonus_5_cultures": "Morale bonus from 5 cultures",
   "build_cost_in_colo_nation": "Build cost in colonial nation",
+  "no_prof_loss_for_mercs": "No professionalism loss from mercs",
 }
 
 var miscNames = {
@@ -312,6 +316,20 @@ var miscNames = {
     "age_of_absolutism": "Age of absolutism",
     "age_of_revolutions": "Age of revolutions",
     "cb_dynastie": "Dynastic CB",
+    "diktatur_dec": "Dictator decision",
+    "cb_coast": "Coastal CB",
+    "navalbase_lvl_1": "Level 1 naval base",
+    "navalbase_lvl_2": "Level 2 naval base",
+    "fortress_keep": "Fortress keep",
+    "fortress_barracks": "Fortress barracks",
+    "fortress_towers": "Fortress towers",
+    "fortress_artillery": "Fortress artillery",
+    "fortress_wall": "Fortress wall",
+    "fortress_supply": "Fortress supply",
+    "navyforcelimit_lvl_2": "Lvl 2 naval force limit",
+    "navyforcelimit_lvl_3": "Lvl 3 naval force limit",
+    "navymanpower_lvl_2": "Lvl 2 sailors",
+    "navymanpower_lvl_3": "Lvl 3 sailors",
 }
 
 window.replaceName = function(s){
@@ -334,7 +352,7 @@ window.formatDisplay = function(bonusName, bonusVal){
     }
 
     // Has decimal place but shouldnt be percentaged
-    if(["Interest", "Yearly inflation reduction", "Tolerance of true faith", "Yearly devotion", "Yearly legitimacy", "Yearly republican tradition","Yearly horde unity", "Army tradition", "Global institution growth"].indexOf(bonusName) !== -1){
+    if(["Mandate", "Interest", "Yearly inflation reduction", "Tolerance of true faith", "Yearly devotion", "Yearly legitimacy", "Yearly republican tradition","Yearly horde unity", "Army tradition", "Global institution growth"].indexOf(bonusName) !== -1){
         return parseFloat(bonusVal).toFixed(2);
     }
     if(["Yearly absolutism", "War exhaustion"].indexOf(bonusName) !== -1){
