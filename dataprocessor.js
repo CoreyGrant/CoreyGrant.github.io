@@ -20,7 +20,7 @@ function parse(s){
     var orderBuffer = [0];
     var bufferDepth = 0;
     var valueBuffer = '';
-    var valueRegex = /[\w\_\-\.]/;
+    var valueRegex = /[\w\_\-\.\/]/;
     var repeatName = {};
     var nameSet = false;
     for(var i = 0; i < lines.length; i++){

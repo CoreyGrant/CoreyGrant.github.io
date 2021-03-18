@@ -1,5 +1,7 @@
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         <link rel="stylesheet" href="ideavariation.css"/>
     </head>
@@ -7,21 +9,61 @@
         <div id='app'>
             <h1>Idea variation ideas/policies</h1>
             <div class="row">
-                <div class="col-3">
-                    <p @click="tab = 'searchbybonus'">Search by bonus</p>
+                <div class="col-6">
+                    <p @click="tab = 'idea-groups'" :class="{active: tab == 'idea-groups'}">Idea groups</p>
                 </div>
-                <div class="col-3">
-                    <p @click="tab = 'policiesbyideas'">Search policies by idea group</p>
+                <div class="col-6">
+                    <p @click="tab = 'policies'" :class="{active: tab == 'policies'}">Policies</p>
                 </div>
-                <div class="col-3">
-                    <p @click="tab = 'all'">All idea groups</p>
+            </div>
+            <div class="idea-groups-page" v-if="tab == 'idea-groups'">
+                <div class="idea-groups">
+                    <div class="idea-group" v-for="idea in filteredIdeas">
+                        <div class="d-flex flex-row justify-content-between">
+                            <h4>{{idea.name}}</h4>
+                            
+                            <img :src="getImageLink(idea.category)"/>
+                        </div>
+                        <div class="idea-group-bonuses">
+                            <div class="idea-group-bonus" v-for="(bonus, index) in idea.bonuses">
+                                <h6>{{index == 7 ? 'Bonus' : '#' + (index+1)}}</h6>
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex align-items-center flex-row" v-for="(v, k) in bonus.bonus" v-if="k != '_order'"><img :src="getImageLink(k)" v-if="hasImageLink(k)" class="bonus-image"/>{{k}}: {{displayBonusVal(k, v)}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
+            </div>
+            <div class="policies-page" v-if="tab == 'policies'">
+                <div class="search-results-policies">
+                    <div class="search-result-policy" v-for="policy in filteredPolicies">
+                        <div class="d-flex flex-row justify-content-between">
+                            <h4>{{getAllow(policy.allow)}}</h4>
+                            <img :src="getImageLink(policy.monarchPower)"/>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex align-items-center flex-row" v-for="bonus in policy.bonuses" v-if="bonus.name != '_order'"><img :src="getImageLink(bonus.name)" v-if="hasImageLink(bonus.name)" class="bonus-image"/>{{bonus.name}}: {{displayBonusVal(bonus.name, bonus.bonus)}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="idea-group-page" v-if="tab == 'idea-group'">
+
+            </div>
+            <div class="policy-page" v-if="tab == 'policy'">
+
             </div>
             <div class="search row" v-if="tab == 'searchbybonus'">
                 <div class="col-4">
                     <h2>National bonuses</h2>
                     <div class="search-bonuses">
-                        
                         <div class="search-bonus" v-for="bonus in bonuses" :title="getBonusDisplay(bonus)" :class="{active: search.bonus[bonus]}" @click="toggleBonusSearch(bonus)">
                             <img v-if="false"/>
                             <p>{{getBonusAcronym(bonus)}}</p>
@@ -104,7 +146,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <ul v-for="(bonus, index) in policy.bonuses">
-                                            <li :class="{active: search.bonus[bonus.name]}" >{{bonus.name}}: {{bonus.bonus}}</li>
+                                            <li :class="{active: search.searchBonus[bonus.name]}" >{{bonus.name}}: {{bonus.bonus}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -113,7 +155,7 @@
                     </div>
                 </div>
             </div>
-            <div class="all" v-if="tab == 'all'">
+            <div class="all" v-if="tab == 'allideas'">
                 <div class="idea-groups">
                     <div class="idea-group" v-for="idea in ideas">
                         <h4>{{idea.name}}</h4>
@@ -130,10 +172,28 @@
                     </div>
                 </div>
             </div>
+            <div class="all" v-if="tab == 'allpolicies'">
+                <div class="idea-groups">
+                    <div class="search-result-policy" v-for="policy in policies">
+                        <div class="d-flex flex-row justify-content-between">
+                            <h4>{{getAllow(policy.allow)}}</h4>
+                            <h4>{{policy.monarchPower}}</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <ul v-for="(bonus, index) in policy.bonuses">
+                                    <li :class="{active: search.bonus[bonus.name]}" >{{bonus.name}}: {{bonus.bonus}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="namereplacer.js"></script>
         <script src="dataprocessor.js"></script>
+        <script src="imagemappings.js"></script>
         <script src="ideavariation.js"></script>
     </body>
 </html>
