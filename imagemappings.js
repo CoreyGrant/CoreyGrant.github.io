@@ -61,7 +61,11 @@ var bonusMappings = {
     "Extra manpower at religious war": "Triple_manpower_increase_in_religious_wars.png",
     "Yearly army professionalism": "Army_professionalism.png",
     "Estate interaction": "Estates.png",
-    "Global garrison growth": "Garrison_size.png"
+    "Global garrison growth": "Garrison_size.png",
+    "Prestige per development from conversion": "Prestige_per_development_from_missionary.png",
+    "Monthly militarized state": "Militarization_of_state.png",
+    "Claim duration": "Claim.png",
+    "Core decay on your own": "Claim.png",
     
 }
 

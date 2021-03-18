@@ -168,7 +168,7 @@ var bonusNames = {
   "global_missionary_strength": "Missionary strength",
   "global_prov_trade_power_modifier": "Provincial trade power modifier",
   "global_regiment_cost": "Regiment cost",
-  "global_regiment_recruit_speed": "Regiment recruit speed",
+  "global_regiment_recruit_speed": "Regimentment time",
   "global_religious_conversion_resistance": "Religious conversion resistance",
   "global_sailors": "National sailors",
   "global_sailors_modifier": "National sailors modifier",
@@ -240,7 +240,7 @@ var bonusNames = {
   "monarch_diplomatic_power":"Monarch diplomatic skill",
   "monarch_military_power":"Monarch military skill",
   "monthly_fervor_increase":"Monthly fervor increase",
-  "monthly_militarized_society":"Monthly militarized society",
+  "monthly_militarized_society":"Monthly militarized state",
   "monthly_splendor":"Monthly splendor",
   "movement_speed":"Movement speed",
   "naval_attrition":"Naval attrition",
@@ -296,7 +296,7 @@ var bonusNames = {
   "transport_power":"Transport combat ability",
   "unjustified_demands":"Unjustified demands",
   "war_exhaustion":"War exhaustion",
-  "war_exhaustion_cost": "War exhaustion cost",
+  "war_exhaustion_cost": "Cost of reducing war exhuastion",
   "war_taxes_cost_modifier":"War taxes cost",
   "warscore_cost_vs_other_religion": "War score cost vs other religions",
   "yearly_absolutism":"Yearly absolutism",
@@ -308,6 +308,15 @@ var bonusNames = {
   "morale_bonus_5_cultures": "Morale bonus from 5 cultures",
   "build_cost_in_colo_nation": "Build cost in colonial nation",
   "no_prof_loss_for_mercs": "No professionalism loss from mercs",
+  "capture_ship_chance": "Ship capture chance",
+  "native_uprising_chance": "Native uprising chance",
+  "monthly_piety": "Monthly piety",
+  "monthly_karma": "Montly karma",
+  "prestige_per_development_from_conversion": "Prestige per development from conversion",
+  "native_assimilation": "Native assimilation",
+  "rival_border_fort_maintenance": "Fort maintenance on border with rival",
+  "vassal_income": "Income from vassals",
+  "sea_repair": "Sea repair"
 }
 
 var miscNames = {
