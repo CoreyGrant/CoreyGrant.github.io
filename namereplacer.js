@@ -316,7 +316,9 @@ var bonusNames = {
   "native_assimilation": "Native assimilation",
   "rival_border_fort_maintenance": "Fort maintenance on border with rival",
   "vassal_income": "Income from vassals",
-  "sea_repair": "Sea repair"
+  "sea_repair": "Sea repair",
+  "may_perform_slave_raid_on_same_religion": "May raid coasts (same religion)",
+  "core_decay_on_your_own": "Core decay on your own",
 }
 
 var miscNames = {
