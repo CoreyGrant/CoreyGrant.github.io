@@ -64,6 +64,9 @@ function format(s){
 }
 
 window.imageMap = function(thingToMap){
+    if(thingToMap.indexOf("__") > -1){
+        thingToMap = thingToMap.split("__")[0];
+    }
     if(monarchPowerMappings[thingToMap]){
         return 'Icons/' + format(monarchPowerMappings[thingToMap]);
     }
