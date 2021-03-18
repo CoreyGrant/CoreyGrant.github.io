@@ -70,5 +70,5 @@ window.imageMap = function(thingToMap){
     if(bonusMappings[thingToMap]){
         return 'Icons/Bonuses/' + format(bonusMappings[thingToMap]);
     }
-    return 'Icons/Bonuses/' + defaultMap(thingToMap);
+    return 'Icons/Bonuses/' + format(defaultMap(thingToMap));
 }
