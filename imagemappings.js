@@ -53,6 +53,8 @@ var bonusMappings = {
     "Sailor maintenance modifier": "sailor_maintenance.png",
     "Add naval force limit per age": "naval_force_limit.png",
     "Extra navy tradition from galleys": "yearly_navy_tradition.png",
+    "Extra navy tradition from light ships": "yearly_navy_tradition.png",
+    "Extra navy tradition from heavy ships": "yearly_navy_tradition.png",
     "Devepment cost for provinces over 25 dev": "Development_cost.png",
     "Reduced dev cost malus from nation size": "Development_cost.png",
     "Inflationreduction": "yearly_inflation_reduction.png",
