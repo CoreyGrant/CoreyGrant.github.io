@@ -329,7 +329,7 @@ window.replaceName = function(s){
 
 window.formatDisplay = function(bonusName, bonusVal){
     // should be thousand formatted
-    if(["National manpower", "Manpower per age"].indexOf(bonusName)){
+    if(["National manpower", "Manpower per age"].indexOf(bonusName) > -1){
         return bonusVal * 1000;
     }
 
