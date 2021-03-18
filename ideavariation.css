@@ -3,6 +3,8 @@ html >*{
     color: #d4d4d4 !important;
     background-color: #1e1e1e !important;
     font-family: 'Roboto', sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 p, ul, h1, h2, h3, h4, h5, h6{
     margin-bottom: 2px;
@@ -21,100 +23,28 @@ h4{
     padding: 15px;
 }
 
-.search{
-    height: calc(100% - 74px);
-}
-
-.search-bonuses{
+.policies{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-.search-bonus{
-    font-size: 10px;
-    display: block;
-    height: 32px;
-    width: 32px;
-    border: 2px solid red;
-    margin: 2px;
-}
-
-.search-bonus.active{
-    border-color: green;
-}
-
-.search-results{
+    justify-content:start;
+    align-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
-}
-
-.search-results-ideas{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
-    
-    font-size: 0.9rem;
-}
-.search-results-policies{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
-    
-    font-size: 0.9rem;
-}
-
-.search-result-idea{
-    display: block;
-    width: calc(25% - 30px);
-    max-height: 220px;
-    margin: 15px;
-    padding: 7px;
-    border: 1px solid grey;
-    border-radius: 2px;
-}
-.search-result-idea .active, .search-result-policy .active{
-    font-weight: bold;
-}
-
-.ideas-search{
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
     font-size: 0.8rem;
 }
-
-.search-idea{
-    border: 2px solid red;
-    padding: 6px;
-    margin: 6px;
+.active{
+    font-weight: bold;
+    font-size: 1rem;
 }
-
-.search-idea.active{
-    border-color: green;
-}
-
-.search-results-policies-by-idea{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 100%;
-    max-height: 700px;
-}
-
-.search-result-policy{
+.policy{
     display: block;
     width: calc(33.3% - 30px);
-    max-height: 180px;
+    min-height: 120px;
     margin: 15px;
     padding: 7px;
-    border: 1px solid grey;
+    border: 1px solid rgba(80, 80, 80, 0.74);
     border-radius: 2px;
     font-size: 0.8rem;
 }
@@ -141,7 +71,7 @@ ul{
     max-height: 450px;
     margin: 15px;
     padding: 7px;
-    border: 1px solid grey;
+    border: 1px solid rgba(80, 80, 80, 0.74);
     border-radius: 2px;
 }
 
@@ -163,18 +93,78 @@ ul{
 
 .policies-page, .idea-groups-page, .policy-page, .idea-group-page{
     width: 100%;
-    height: calc(100% - 70px);
+    height: calc(100% - 120px);
 } 
-
-.active{
-    font-weight: bold;
-}
 
 ul{
     padding-left: 4px;
 }
 
 .bonus-image{
+    height: 32px;
+    width: 32px;
+    margin-right: 3px;
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.monarch-power-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.monarch-power-input img{
     height: 24px;
     width: 24px;
+    border: 3px solid red;
+    border-radius: 12px;
+}
+
+.monarch-power-input img.active{
+    border-color: green;
+}
+
+.bonus-input, .category-input{
+    width: 450px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bonus-input label{
+    font-size:15px;
+    margin-right: 5px;
+}
+
+.category-input label{
+    font-size:15px;
+    margin-right: 5px;
+}
+
+.bonus-input select{
+    height: 24px;
+    font-size: 12px;
+    padding: 0;
+    width: 300px;
+}
+.category-input select{
+    height: 24px;
+    font-size: 12px;
+    padding: 0;
+    width: 300px;
+}
+
+.tab{
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
