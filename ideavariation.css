@@ -49,10 +49,25 @@ h4{
     font-size: 0.8rem;
 }
 
+.full-policy{
+    display: block;
+    width: calc(100% - 30px);
+    min-height: 120px;
+    margin: 15px;
+    padding: 7px;
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    border-radius: 2px;
+    font-size: 0.8rem;
+}
+
 ul{
     list-style: none;
 }
 
+.policy-link{
+    text-decoration: underline;
+    color: cyan;
+}
 
 .idea-groups{
     display: flex;

@@ -154,6 +154,7 @@ function processPolicies(policiesObj){
         var policy = {};
         policy.bonuses = [];
         var policyName = keys[i];
+        policy.name = policyName;
         var policyValue = policiesObj[policyName];
         var policyPropKeys = Object.getOwnPropertyNames(policyValue);
         for(var j = 0; j < policyPropKeys.length; j++){
@@ -163,7 +164,9 @@ function processPolicies(policiesObj){
                 policy.monarchPower = policyPropValue.toUpperCase();
             } else if(policyPropName == 'allow')
             {
-                policy.allow = processAllow(policyPropValue);
+                var allow = processAllow(policyPropValue);
+                policy.allow = allow[0]
+                policy.allowMeta = allow[1];
             }else if(policyPropName == 'potential'){
                 policy.potential = policyPropValue
             }
@@ -223,11 +226,31 @@ function getIdeaGroupExclusiveCategory(ideaGroupName){
 function processAllow(allowObj){
     var output = {};
     var keys = Object.getOwnPropertyNames(allowObj);
+    var meta = {restriction: {amount: 0, policies: []}};
     for(var i = 0; i < keys.length; i++){
         var key = keys[i];
         var value = allowObj[key];
         if(key == "hidden_trigger"){
             output["full_idea_group_990"] = "(Any incomplete)";
+        }
+        if(key.startsWith("NOT")){
+            var obj = value["calc_true_if"];
+            if(obj){
+                var calcTrueIfKeys = Object.getOwnPropertyNames(obj);
+                meta.restrictions = [];
+                for(var j = 0; j < calcTrueIfKeys.length; j++){
+                    var calcTrueIfKey = calcTrueIfKeys[j];
+                    var calcTrueIfVal = obj[calcTrueIfKey];
+                    if(calcTrueIfKey === 'amount'){
+                        meta.restriction.amount = parseInt(calcTrueIfVal);
+                        continue;
+                    }
+                    if(calcTrueIfKey.startsWith("has_active_policy")){
+                        meta.restriction.policies.push(calcTrueIfVal);
+                    }
+                }
+            }
+            
         }
         if(key.startsWith("OR")){
             if(Object.values(value).indexOf("Religious") > -1){
@@ -263,7 +286,7 @@ function processAllow(allowObj){
         }
         output[key] = value;
     }
-    return output;
+    return [output, meta];
 }
 
 function processTrigger(triggerObj){

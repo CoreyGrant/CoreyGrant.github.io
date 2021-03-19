@@ -341,6 +341,7 @@ var miscNames = {
     "navyforcelimit_lvl_3": "Lvl 3 naval force limit",
     "navymanpower_lvl_2": "Lvl 2 sailors",
     "navymanpower_lvl_3": "Lvl 3 sailors",
+    "improve_development": "Improve development"
 }
 
 window.replaceName = function(s){

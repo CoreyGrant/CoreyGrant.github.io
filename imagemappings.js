@@ -66,7 +66,7 @@ var bonusMappings = {
     "Monthly militarized state": "Militarization_of_state.png",
     "Claim duration": "Claim.png",
     "Core decay on your own": "Claim.png",
-    
+    "Add manadate/IA per age": "Imperial_authority.png"
 }
 
 function defaultMap(name){

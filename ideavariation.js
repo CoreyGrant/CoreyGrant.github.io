@@ -16,6 +16,7 @@
             //     .filter((value, i, a) => a.indexOf(value) === i)
             //     .sort(),
             policyBonuses: data.policyBonuses.sort(),
+            selectedPolicy: {},
             search: {
                 ideaBonus: '',
                 ideaExclusiveCategory: '',
@@ -56,6 +57,13 @@
                 return val.indexOf("__") > -1
                     ? val.split('__')[0]
                     : val;
+            },
+            navigateToPolicy(policy){
+                this.selectedPolicy = policy;
+                this.tab = "policy";
+            },
+            policyByName(policyName){
+                return this.policies.find(x => x.name === policyName);
             }
         },
         computed:{

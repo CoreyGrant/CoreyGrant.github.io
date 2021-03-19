@@ -77,10 +77,9 @@
                 <div class="policies">
                     <div class="policy" v-for="policy in filteredPolicies">
                         <div class="d-flex flex-row justify-content-between">
-                            <h4>{{getAllow(policy.allow)}} {{getAge(policy.allow)}}</h4>
+                            <h4 @click="navigateToPolicy(policy)" class="policy-link">{{getAllow(policy.allow)}} {{getAge(policy.allow)}}</h4>
                             <img :src="getImageLink(policy.monarchPower)"/>
                         </div>
-                        <p></p>
                         <div class="row">
                             <div class="col">
                                 <div class="d-flex flex-column">
@@ -95,7 +94,26 @@
 
             </div>
             <div class="policy-page" v-if="tab == 'policy'">
-
+                <div class="full-policy">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h4>{{getAllow(selectedPolicy.allow)}} {{getAge(selectedPolicy.allow)}}</h4>
+                        <img :src="getImageLink(selectedPolicy.monarchPower)"/>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center flex-row" v-for="bonus in selectedPolicy.bonuses" v-if="bonus.name != '_order'"><img :src="getImageLink(bonus.name)"class="bonus-image"/>{{displayBonusName(bonus.name)}}: {{displayBonusVal(bonus.name, bonus.bonus)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" v-if="selectedPolicy.allowMeta.restriction.amount">
+                        <div class="col">
+                            <h4>Restrictions</h4>
+                            <p>This policy cannot be active with the following other policies:</p>
+                            <p v-for="policyName in selectedPolicy.allowMeta.restriction.policies" @click="navigateToPolicy(policyByName(policyName))" class="policy-link">{{getAllow(policyByName(policyName).allow)}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
