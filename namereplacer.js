@@ -371,7 +371,7 @@ window.formatDisplay = function(bonusName, bonusVal){
         return bonusVal;
     }
     // Has decimal place or otherwise SHOULD be percentaged
-    if(bonusVal.indexOf('.') > -1 || [].indexOf(bonusName) !== -1){
+    if(bonusVal.indexOf('.') > -1 || ['National manpower modifier'].indexOf(bonusName) !== -1){
         var suffix = '';
         if(bonusVal.indexOf('/') > -1){
             var split = bonusVal.split('/');
