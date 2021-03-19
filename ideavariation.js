@@ -24,7 +24,8 @@
                 ideas: searchIdeas,
                 ideaMonarch: '',
                 policyMonarch: '',
-            }
+            },
+            navigationBuffer: []
         },
         methods:{
             getAllow(allow){
@@ -58,9 +59,23 @@
                     ? val.split('__')[0]
                     : val;
             },
+            navigateToTab(tab){
+                this.tab = tab;
+                this.navigationBuffer.push({tab});
+            },
             navigateToPolicy(policy){
                 this.selectedPolicy = policy;
                 this.tab = "policy";
+
+                this.navigationBuffer.push({tab: this.tab, selectedPolicy: policy});
+            },
+            navigateBack(){
+                var current = this.navigationBuffer.pop();
+                var last = this.navigationBuffer[this.navigationBuffer.length - 1];
+                if(this.tab == 'policy'){
+                    this.selectedPolicy = last.selectedPolicy;
+                }
+                this.tab = last.tab;
             },
             policyByName(policyName){
                 return this.policies.find(x => x.name === policyName);

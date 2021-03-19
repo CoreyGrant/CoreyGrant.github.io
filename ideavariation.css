@@ -40,12 +40,11 @@ h4{
 }
 .policy{
     display: block;
-    width: calc(33.3% - 30px);
-    min-height: 120px;
-    margin: 15px;
+    width: calc(25% - 20px);
+    margin: 10px;
     padding: 7px;
     border: 1px solid rgba(80, 80, 80, 0.74);
-    border-radius: 2px;
+    border-radius: 5px;
     font-size: 0.8rem;
 }
 
@@ -64,9 +63,10 @@ ul{
     list-style: none;
 }
 
-.policy-link{
+.link{
     text-decoration: underline;
     color: cyan;
+    cursor: pointer;
 }
 
 .idea-groups{
@@ -82,13 +82,18 @@ ul{
 .idea-group{
     display: block;
     width: calc(100% - 30px);
-    min-height: 220px;
-    max-height: 450px;
-    margin: 15px;
-    padding: 7px;
+    margin-top: 15px;
     border: 1px solid rgba(80, 80, 80, 0.74);
-    border-radius: 2px;
+    border-radius: 5px;
 }
+.idea-group-top{
+    padding: 10px;
+}
+.sideways{
+    transform: rotate(90deg);
+    font-size: 0.7rem;
+}
+
 
 .idea-group-bonuses{
     display: flex;
@@ -98,12 +103,22 @@ ul{
     overflow-x: hidden;
 }
 
+.idea-num{
+    border-left: 1px solid #1e1e1e;
+    height: 100%;
+}
+
 .idea-group-bonus{
     display: block;
     width: calc(25% - 20px);
     margin: 10px;
-    padding: 3px;
-    background-color: #333333
+    background-color: #333333;
+    border-radius: 5px;
+    min-height: 40px;
+}
+
+.bonus-detail{
+    margin: 3px;
 }
 
 .policies-page, .idea-groups-page, .policy-page, .idea-group-page{
@@ -176,8 +191,12 @@ ul{
     padding: 0;
     width: 300px;
 }
+.tab-row{
+    display: flex;
+}
 
 .tab{
+    width: 25%;
     border: 1px solid rgba(80, 80, 80, 0.74);
     display: flex;
     justify-content: center;

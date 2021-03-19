@@ -8,12 +8,12 @@
     <body>
         <div id='app' v-cloak>
             <h1>Idea variation ideas/policies</h1>
-            <div class="row tab-row">
-                <div class="col-3 tab" @click="tab = 'idea-groups'">
-                    <p  :class="{active: tab == 'idea-groups'}">Idea groups</p>
+            <div class="tab-row">
+                <div class="tab" @click="navigateToTab('idea-groups')">
+                    <p :class="{active: tab == 'idea-groups'}" class="link">Idea groups</p>
                 </div>
-                <div class="col-3 tab" @click="tab = 'policies'">
-                    <p  :class="{active: tab == 'policies'}">Policies</p>
+                <div class="tab" @click="navigateToTab('policies')">
+                    <p :class="{active: tab == 'policies'}" class="link">Policies</p>
                 </div>
             </div>
             <div class="idea-groups-page" v-if="tab == 'idea-groups'">
@@ -40,17 +40,31 @@
                 </div>
                 <div class="idea-groups">
                     <div class="idea-group" v-for="idea in filteredIdeas">
-                        <div class="d-flex flex-row justify-content-between">
-                            <h4>{{idea.name}}</h4>
-                            <p v-if="idea.exclusiveCategory">Category: {{idea.exclusiveCategory}}</p>
-                            <img :src="getImageLink(idea.category)"/>
+                            <div class="row idea-group-top">
+                                <div class="col-4  d-flex justify-content-start">
+                                <h4>{{idea.name}}</h4>
+                            </div>
+                            <div class="col-4 d-flex justify-content-center">
+                                <p v-if="idea.exclusiveCategory">Category: {{idea.exclusiveCategory}}</p>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end">
+                                <img :src="getImageLink(idea.category)"/>
+                            </div>
                         </div>
                         <div class="idea-group-bonuses">
                             <div class="idea-group-bonus" v-for="(bonus, index) in idea.bonuses">
-                                <h6>{{index == 7 ? 'Bonus' : '#' + (index+1)}}</h6>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex align-items-center flex-row" v-for="(v, k) in bonus.bonus" v-if="k != '_order'" :class="{active: search.ideaBonus === displayBonusName(k)}"><img :src="getImageLink(k)" class="bonus-image"/>{{displayBonusName(k)}}: {{displayBonusVal(k, v)}}</div>
+                                <div style="height: 100%;" class="d-flex flex-row">
+                                    <div style="width: 90%;">
+                                        <div class="d-flex flex-column bonus-detail">
+                                            <div class="d-flex align-items-center flex-row" v-for="(v, k) in bonus.bonus" v-if="k != '_order'" :class="{active: search.ideaBonus === displayBonusName(k)}"><img :src="getImageLink(k)" class="bonus-image"/>{{displayBonusName(k)}}: {{displayBonusVal(k, v)}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center idea-num" style="width: 10%;">
+                                        <p :class="{sideways: index == 7, notSideways: index != 7}">{{index == 7 ? 'Bonus' : (index+1)}}</h6>
+                                    </div>
                                 </div>
+                                
+                                
                             </div>
                         </div>
                         
@@ -77,7 +91,7 @@
                 <div class="policies">
                     <div class="policy" v-for="policy in filteredPolicies">
                         <div class="d-flex flex-row justify-content-between">
-                            <h4 @click="navigateToPolicy(policy)" class="policy-link">{{getAllow(policy.allow)}} {{getAge(policy.allow)}}</h4>
+                            <h4 @click="navigateToPolicy(policy)" class="link">{{getAllow(policy.allow)}} {{getAge(policy.allow)}}</h4>
                             <img :src="getImageLink(policy.monarchPower)"/>
                         </div>
                         <div class="row">
@@ -94,6 +108,9 @@
 
             </div>
             <div class="policy-page" v-if="tab == 'policy'">
+                <div>
+                    <p class="link" @click="navigateBack()">&lt; Back</p>
+                </div>
                 <div class="full-policy">
                     <div class="d-flex flex-row justify-content-between">
                         <h4>{{getAllow(selectedPolicy.allow)}} {{getAge(selectedPolicy.allow)}}</h4>
@@ -110,7 +127,7 @@
                         <div class="col">
                             <h4>Restrictions</h4>
                             <p>This policy cannot be active with the following other policies:</p>
-                            <p v-for="policyName in selectedPolicy.allowMeta.restriction.policies" @click="navigateToPolicy(policyByName(policyName))" class="policy-link">{{getAllow(policyByName(policyName).allow)}}</p>
+                            <p v-for="policyName in selectedPolicy.allowMeta.restriction.policies" @click="navigateToPolicy(policyByName(policyName))" v-if="policyName != selectedPolicy.name" class="link">{{getAllow(policyByName(policyName).allow)}}</p>
                         </div>
                     </div>
                 </div>
