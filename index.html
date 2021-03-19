@@ -3,6 +3,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        
+<link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+
         <link rel="stylesheet" href="ideavariation.css"/>
     </head>
     <body>
@@ -14,6 +17,9 @@
                 </div>
                 <div class="tab" @click="navigateToTab('policies')">
                     <p :class="{active: tab == 'policies'}" class="link">Policies</p>
+                </div>
+                <div class="tab" @click="navigateToTab('planner')">
+                    <p :class="{active: tab == 'policies'}" class="link">Planner</p>
                 </div>
             </div>
             <div class="idea-groups-page" v-if="tab == 'idea-groups'">
@@ -91,7 +97,7 @@
                 <div class="policies">
                     <div class="policy" v-for="policy in filteredPolicies">
                         <div class="d-flex flex-row justify-content-between">
-                            <h4 @click="navigateToPolicy(policy)" class="link">{{getAllow(policy.allow)}} {{getAge(policy.allow)}}</h4>
+                            <h4 @click="navigateToPolicy(policy)" class="link">{{policy.displayAllow}} {{getAge(policy.allow)}}</h4>
                             <img :src="getImageLink(policy.monarchPower)"/>
                         </div>
                         <div class="row">
@@ -104,6 +110,83 @@
                     </div>
                 </div>
             </div>
+            <div class="planner-page" v-if="tab == 'planner'">
+                <div class="planner">
+                    <div class="planner-idea-groups">
+                        <div class="planner-idea-group-add">
+                            <div class="d-flex">
+                                <label for="planner-idea-group-add">Idea group </label>
+                                <v-select class="planner-idea-group-add-select" :options="plannerAvailableIdeas" 
+                                v-model="planner.selectedIdeaGroup" label="name">
+                                    <template slot="option" slot-scope="option">
+                                        {{ option.name }}
+                                        <img :src="getImageLink(option.category)" v-if="option.category" />
+                                    </template>
+                                  </v-select>
+                                <p class="link planner-idea-group-add-confirm" @click="plannerAddSelectedIdea()" :class="{disabled: !planner.selectedIdeaGroup}" style="text-decoration: none;">+</p>
+                            </div>
+                        </div>
+                        <div class="planner-idea-group-show">
+                            <img :src="getImageLink('ADM')"/>
+                            <div>
+                                <div v-for="idea in filteredPlannerIdeas('ADM')" @click="removePlannerIdeaGroup(idea)" class="planner-choice">
+                                    {{idea}}
+                                </div>
+                            </div>
+                            <img :src="getImageLink('DIP')"/>
+                            <div>
+                                <div v-for="idea in filteredPlannerIdeas('DIP')" @click="removePlannerIdeaGroup(idea)" class="planner-choice">
+                                    {{idea}}
+                                </div>
+                            </div>
+                            <img :src="getImageLink('MIL')"/>
+                            <div>
+                                <div v-for="idea in filteredPlannerIdeas('MIL')" @click="removePlannerIdeaGroup(idea)" class="planner-choice">
+                                    {{idea}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="planner-policies">
+                        <div class="planner-policies-add">
+                            <div class="d-flex">
+                                <label for="planner-policies-add">Policy </label>
+                                <v-select class="planner-policies-add-select" :options="plannerAvailablePolicies" 
+                                v-model="planner.selectedPolicy" label="name">
+                                    <template slot="option" slot-scope="option">
+                                        {{ option.displayAllow }}
+                                        <img :src="getImageLink(option.monarchPower)" v-if="option.monarchPower" />
+                                    </template>
+                                  </v-select>
+                                <p class="link planner-policies-add-confirm" @click="plannerAddSelectedPolicy()" :class="{disabled: !planner.selectedPolicy}" style="text-decoration: none;">+</p>
+                            </div>
+                        </div>
+                        <div class="planner-policies-show">
+                            <img :src="getImageLink('ADM')"/>
+                            <div>
+                                <div v-for="policy in filteredPlannerPolicies('ADM')" @click="removePlannerPolicy(policy)" :title="getTitleForPlannerPolicy(policy)" class="planner-choice">
+                                    {{policy}}
+                                </div>
+                            </div>
+                            <img :src="getImageLink('DIP')"/>
+                            <div>
+                                <div v-for="policy in filteredPlannerPolicies('DIP')" @click="removePlannerPolicy(policy)" :title="getTitleForPlannerPolicy(policy)" class="planner-choice">
+                                    {{policy}}
+                                </div>
+                            </div>
+                            <img :src="getImageLink('MIL')"/>
+                            <div>
+                                <div v-for="policy in filteredPlannerPolicies('MIL')" @click="removePlannerPolicy(policy)" :title="getTitleForPlannerPolicy(policy)" class="planner-choice">
+                                    {{policy}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="planner-bonuses">
+                        <div v-for="bonus in plannerBonuses"><img :src="getImageLink(bonus.name)"class="bonus-image"/>{{displayBonusName(bonus.name)}}: {{displayBonusVal(bonus.name, bonus.bonus)}}</div>
+                    </div>
+                </div>
+            </div>
             <div class="idea-group-page" v-if="tab == 'idea-group'">
 
             </div>
@@ -113,7 +196,7 @@
                 </div>
                 <div class="full-policy">
                     <div class="d-flex flex-row justify-content-between">
-                        <h4>{{getAllow(selectedPolicy.allow)}} {{getAge(selectedPolicy.allow)}}</h4>
+                        <h4>{{selectedPolicy.displayAllow}} {{getAge(selectedPolicy.allow)}}</h4>
                         <img :src="getImageLink(selectedPolicy.monarchPower)"/>
                     </div>
                     <div class="row">
@@ -127,13 +210,14 @@
                         <div class="col">
                             <h4>Restrictions</h4>
                             <p>This policy can only be active when less than {{selectedPolicy.allowMeta.restriction.amount}} of the following policies are active:</p>
-                            <p v-for="policyName in selectedPolicy.allowMeta.restriction.policies" @click="navigateToPolicy(policyByName(policyName))" v-if="policyName != selectedPolicy.name" class="link">{{getAllow(policyByName(policyName).allow)}}</p>
+                            <p v-for="policyName in selectedPolicy.allowMeta.restriction.policies" @click="navigateToPolicy(policyByName(policyName))" v-if="policyName != selectedPolicy.name" class="link">{{policyByName(policyName).displayAllow}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-select@latest"></script>
         <script src="namereplacer.js"></script>
         <script src="dataprocessor.js"></script>
         <script src="imagemappings.js"></script>

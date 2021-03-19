@@ -121,7 +121,7 @@ ul{
     margin: 3px;
 }
 
-.policies-page, .idea-groups-page, .policy-page, .idea-group-page{
+.policies-page, .idea-groups-page, .policy-page, .idea-group-page, .planner-page{
     width: 100%;
     height: calc(100% - 120px);
 } 
@@ -201,4 +201,102 @@ ul{
     display: flex;
     justify-content: center;
     cursor: pointer;
+}
+
+.planner{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.planner-idea-groups{
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.planner-idea-group-add{
+    height: 10%;
+}
+.planner-idea-group-add label{
+    margin-right: 5px;
+}
+.planner-idea-group-add .v-select{
+    width: calc(100% - 150px);
+}
+.planner-idea-group-add-confirm{
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.planner-policies-add{
+    height: 10%;
+}
+.planner-policies-add label{
+    margin-right: 5px;
+}
+.planner-policies-add .v-select{
+    width: calc(100% - 150px);
+}
+.planner-policies-add-confirm{
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.planner-policies{
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+}
+.planner-bonuses{
+    width: 40%;
+    height: 100%;
+    padding: 10px;
+}
+
+.planner-policies-show{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+.planner-policies-show > div{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap:wrap;
+}
+
+.planner-choice{
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    padding: 4px;
+    margin: 4px;
+}
+
+.planner-policies-show img{
+    align-self:center;
+}
+
+.planner-idea-group-show{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+.planner-idea-group-show > div{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap:wrap;
+}
+
+.planner-idea-group-show img{
+    align-self:center;
+}
+
+.disabled{
+    cursor: not-allowed !important;
 }

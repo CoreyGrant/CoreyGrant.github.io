@@ -10,6 +10,12 @@ window.getData = async function(){
         var ideasObj = parse(resp[0]);
         var policiesObj = parse(resp[1]);
         var processedPolicies = processPolicies(policiesObj);
+        processedPolicies[0].forEach(y => {
+            var key = 'full_idea_group';
+            var keys = Object.getOwnPropertyNames(y.allow).filter(x => x.startsWith(key)).map(x => y.allow[x]);
+            var name = keys.join(" + ");
+            y.displayAllow = name;
+        });
         var processedIdeas = processIdeas(ideasObj);
         var data = {
             ideas: processedIdeas[0],
@@ -186,6 +192,44 @@ function processPolicies(policiesObj){
         output.push(policy);
     }
     bonuses = bonuses.filter((x, i) => bonuses.indexOf(x) === i);
+    // policies need to be flattened on age
+    var policiesWithAge = output.filter(x => x.allow.current_age);
+    var otherPolicies = output.filter(x => !x.allow.current_age);
+   
+    var buffer = {};
+    for(var i = 0; i<policiesWithAge.length; i++){
+        var policy = policiesWithAge[i];
+        var key = 'full_idea_group';
+        var keys = Object.getOwnPropertyNames(policy.allow).filter(x => x.startsWith(key)).map(x => policy.allow[x]);
+        var name = keys.join("/");
+        buffer[name] = buffer[name] || {};
+        buffer[name][policy.allow.current_age] = policy;
+    }
+    var newPoliciesWithAge = Object.getOwnPropertyNames(buffer)
+        .map((x, i) => {
+            var policies = buffer[x];
+            var first = policies["Age of discovery"];
+            var second = policies["Age of reformation"];
+            var third = policies["Age of absolutism"];
+            var fourth = policies["Age of revolutions"];
+            var bonuses = first.bonuses.map((z) => {
+                return {
+                    name: z.name,
+                    bonus: `${z.bonus}/${second.bonuses.find(y => y.name == z.name).bonus}/${third.bonuses.find(y => y.name == z.name).bonus}/${fourth.bonuses.find(y => y.name == z.name).bonus}`
+                };
+            });
+            var allow = Object.assign({}, first.allow);
+            delete allow.current_age;
+            return {
+                name: first.name,
+                bonuses: bonuses, 
+                allow: allow,
+                allowMeta: first.allowMeta,
+                monarchPower: first.monarchPower
+            }
+        });
+    output = otherPolicies.concat(newPoliciesWithAge);
+    output.sort((x, y) => x.name < y.name);
     return [output, bonuses];
 }
 
@@ -196,7 +240,7 @@ var government = ["Horde", "Theocracy", "Republic", "Monarchy", "Dictatorship"];
 var damage = ["Shock", "Fire"];
 var centralism = ["Centralism", "Decentralism"];
 var religious = ["Religious","Catholic", "Protestant", "Reformed", "Orthodox", "Sunni", "Tengri", "Hindu", "Confucian", "Buddhist", "Norse", "Shinto", "Cathar", "Coptic", "Romuva", "Suomi", "Jewish", "Slav", "Hellanistic", "Manichean", "Animist", "Fetishist", "Zoroastrianism", "Anglican", "Nahuatl", "Mesoamerican", "Inti", "Totemism", "Shia", "Ibadi", "Hussite"];
-
+var islamic = ["Sunni", "Shia", "Ibadi"];
 function getIdeaGroupExclusiveCategory(ideaGroupName){
     
     if(imperial.indexOf(ideaGroupName) > -1){
@@ -217,12 +261,15 @@ function getIdeaGroupExclusiveCategory(ideaGroupName){
     if(centralism.indexOf(ideaGroupName) > -1){
         return "Centralism";
     }
+    if(islamic.indexOf(ideaGroupName) > -1){
+        return "Islamic";
+    }
     if(religious.indexOf(ideaGroupName) > -1){
         return "Religious";
     }
     return "General";
 }
-
+window.getIdeaGroupExclusiveCategory = getIdeaGroupExclusiveCategory;
 function processAllow(allowObj){
     var output = {};
     var keys = Object.getOwnPropertyNames(allowObj);
@@ -231,7 +278,14 @@ function processAllow(allowObj){
         var key = keys[i];
         var value = allowObj[key];
         if(key == "hidden_trigger"){
-            output["full_idea_group_990"] = "(Any incomplete)";
+            var hasIdeas = Object.getOwnPropertyNames(value["OR"]).filter(x => x.startsWith("has_idea_group")).map(x => value["OR"][x]);
+
+            if(arraysSame(hasIdeas, window.ideaGroupNames)){
+                output["full_idea_group_990"] = "(Any incomplete)";
+            } else if(arraysSame(hasIdeas, window.ideaGroupNames.filter(x => !['Shia', 'Ibadi', 'Hussite'].includes(x)))){
+
+                output["full_idea_group_990"] = "(Any incomplete but Shia/Ibadi/Hussite)";
+            }
         }
         if(key.startsWith("NOT")){
             var obj = value["calc_true_if"];
@@ -253,36 +307,59 @@ function processAllow(allowObj){
             
         }
         if(key.startsWith("OR")){
-            if(Object.values(value).indexOf("Religious") > -1){
-                key = "full_idea_group__997";
-                value = "(Any Religious)";
+            delete value._order;
+            key = "full_idea_group_999";
+            var objectValues = Object.values(value);
+            var same = arraysSame.bind(null, objectValues);
+            if(same(imperial)){
+                value = `[Imperial/Imperial ambition]`;
+            } else if(same(ship)){
+                value = `[Ship]`;
+            }else if(same(army)){
+                value = `[Army]`;
+            }else if(same(government)){
+                value = `[Government]`;
+            }else if(same(damage)){
+                value = `[Damage]`;
+            }else if(same(centralism)){
+                value = `[Centralism]`;
+            }else if(same(religious)){
+                value = `[Religious]`;
+            } else if(same(islamic)){
+                value = `[Islamic]`;
+            } else{
+                value = "(" + Object.values(value).join("/") + ")";
             }
-            if(Object.values(value).indexOf("Horde") > -1){
-                if(Object.values(value).indexOf("Republic") === -1){
-                    value = "(Any Government but republic)";
-                } else{
-                    value = "(Any Government)";
-                }
-                key = "full_idea_group__998";
-                value = "(Any Government)";
-            }
-            if(Object.values(value).indexOf("Heavy ship") > -1){
-                if(Object.values(value).indexOf("Light ship") === -1){
-                    value = "(Heavy/Galley)";
-                } else{
-                    value = "(Heavy/Light/Galley)";
-                }
-                key = "full_idea_group__999";
+            // if(Object.values(value).indexOf("Religious") > -1){
+            //     key = "full_idea_group__997";
+            //     value = "(Any Religious)";
+            // }
+            // if(Object.values(value).indexOf("Horde") > -1){
+            //     if(Object.values(value).indexOf("Republic") === -1){
+            //         value = "(Any Government but republic)";
+            //     } else{
+            //         value = "(Any Government)";
+            //     }
+            //     key = "full_idea_group__998";
+            //     value = "(Any Government)";
+            // }
+            // if(Object.values(value).indexOf("Heavy ship") > -1){
+            //     if(Object.values(value).indexOf("Light ship") === -1){
+            //         value = "(Heavy/Galley)";
+            //     } else{
+            //         value = "(Heavy/Light/Galley)";
+            //     }
+            //     key = "full_idea_group__999";
                 
-            }
-            if(Object.values(value).indexOf("Imperial") > -1){
-                key = "full_idea_group__996";
-                value = "(Imperial/Imperial Ambition)"
-            }
-            if(Object.values(value).indexOf("Standing Army") > -1){
-                key = "full_idea_group__995";
-                value = "(Standing Army/Conscription)"
-            }
+            // }
+            // if(Object.values(value).indexOf("Imperial") > -1){
+            //     key = "full_idea_group__996";
+            //     value = "(Imperial/Imperial Ambition)"
+            // }
+            // if(Object.values(value).indexOf("Standing Army") > -1){
+            //     key = "full_idea_group__995";
+            //     value = "(Standing Army/Conscription)"
+            // }
         }
         output[key] = value;
     }
@@ -313,4 +390,8 @@ function processTrigger(triggerObj){
         or,
         triggers
     };
+}
+
+function arraysSame(first, second){
+    return first.every(a => second.indexOf(a) > -1) && second.every(b => first.indexOf(b) > -1);
 }

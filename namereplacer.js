@@ -82,7 +82,7 @@ var ideaGroupNames = {
     "shock0": "Shock",
     "fire0": "Fire",
 }
-
+window.ideaGroupNames = Object.values(ideaGroupNames);
 var bonusNames = {
     "add_building": "Add building",
     "development_cost_over_25": "Devepment cost for provinces over 25 dev",
