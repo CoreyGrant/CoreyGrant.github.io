@@ -87,7 +87,7 @@
             var currentBufferDepth = 0;
 
             var self = {
-                getBuffer(type){
+                getBuffer: function(type){
                     switch(type.toLowerCase()){
                         case 'propname':
                             return propNameBuffer[currentBufferDepth];
@@ -99,7 +99,7 @@
                             return propSideBuffer[currentBufferDepth];
                     }
                 },
-                getBufferState(offset){
+                getBufferState: function(offset){
                     if(!offset){offset = 0;}
                     return {
                         propName: self.getBuffer('propName')[currentBufferDepth-offset],
@@ -109,24 +109,24 @@
                         depth: currentBufferDepth
                     };
                 },
-                setVal(val, offset){
+                setVal: function(val, offset){
                     if(!offset){offset = 0;}
                     propValBuffer[currentBufferDepth - offset] = val;
                 },
-                setPropSide(propSide){
+                setPropSide: function(propSide){
                     propSideBuffer[currentBufferDepth] = propSide;
                 },
-                setPropName(propName){
+                setPropName: function(propName){
                     propNameBuffer[currentBufferDepth] = propName;
                 },
-                goDeeper(){
+                goDeeper: function(){
                     currentBufferDepth++;
                     self.getBuffer('propName').push('');
                     self.getBuffer('propVal').push('');
                     self.getBuffer('repeatName').push({});
                     self.getBuffer('propSide').push(false);
                 },
-                comeUp(){
+                comeUp: function(){
                     currentBufferDepth--;
                     return {
                         propName: self.getBuffer('propName').pop(),
