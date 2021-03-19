@@ -46,7 +46,7 @@
             },
             getTitleForPlannerPolicy(policyAllow){
                 var policy = this.policies.find(x => x.displayAllow == policyAllow);
-                return policy.bonuses.map(x => x.name + ": " + this.displayBonusName(x.name, x.bonus)).join('\n');
+                return policy.bonuses.map(x => x.name + ": " + this.displayBonusvVal(x.name, x.bonus)).join('\n');
             },
             displayBonusVal(bonusName, bonusVal){
                 bonusVal = bonusVal.toString();
