@@ -74,7 +74,7 @@
                 }
             }
         }
-        return outputObj
+        return outputObj;
     }
 
     function getBuffers(){
@@ -86,7 +86,7 @@
             var propSideBuffer = [];
             var currentBufferDepth = 0;
 
-            return {
+            var self = {
                 getBuffer(type){
                     switch(type.toLowerCase()){
                         case 'propname':
@@ -102,10 +102,10 @@
                 getBufferState(offset){
                     if(!offset){offset = 0;}
                     return {
-                        propName: this.getBuffer('propName')[currentBufferDepth-offset],
-                        propVal: this.getBuffer('propVal')[currentBufferDepth-offset],
-                        repeatName: this.getBuffer('repeatName')[currentBufferDepth-offset],
-                        propSide: this.getBuffer('propSide')[currentBufferDepth-offset],
+                        propName: self.getBuffer('propName')[currentBufferDepth-offset],
+                        propVal: self.getBuffer('propVal')[currentBufferDepth-offset],
+                        repeatName: self.getBuffer('repeatName')[currentBufferDepth-offset],
+                        propSide: self.getBuffer('propSide')[currentBufferDepth-offset],
                         depth: currentBufferDepth
                     };
                 },
@@ -121,22 +121,23 @@
                 },
                 goDeeper(){
                     currentBufferDepth++;
-                    this.getBuffer('propName').push('');
-                    this.getBuffer('propVal').push('');
-                    this.getBuffer('repeatName').push({});
-                    this.getBuffer('propSide').push(false);
+                    self.getBuffer('propName').push('');
+                    self.getBuffer('propVal').push('');
+                    self.getBuffer('repeatName').push({});
+                    self.getBuffer('propSide').push(false);
                 },
                 comeUp(){
                     currentBufferDepth--;
                     return {
-                        propName: this.getBuffer('propName').pop(),
-                        propVal: this.getBuffer('propVal').pop(),
-                        repeatName: this.getBuffer('repeatName').pop(),
-                        propSide: this.getBuffer('propSide').pop(),
+                        propName: self.getBuffer('propName').pop(),
+                        propVal: self.getBuffer('propVal').pop(),
+                        repeatName: self.getBuffer('repeatName').pop(),
+                        propSide: self.getBuffer('propSide').pop(),
                         depth: currentBufferDepth + 1,
                     };
                 },
-            }
+            };
+            return self;
         }());
     }
 
