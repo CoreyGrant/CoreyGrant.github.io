@@ -126,7 +126,7 @@
                     <div class="row" v-if="selectedPolicy.allowMeta.restriction.amount">
                         <div class="col">
                             <h4>Restrictions</h4>
-                            <p>This policy cannot be active with the following other policies:</p>
+                            <p>This policy can only be active when less than {{selectedPolicy.allowMeta.restriction.amount}} of the following policies are active:</p>
                             <p v-for="policyName in selectedPolicy.allowMeta.restriction.policies" @click="navigateToPolicy(policyByName(policyName))" v-if="policyName != selectedPolicy.name" class="link">{{getAllow(policyByName(policyName).allow)}}</p>
                         </div>
                     </div>
