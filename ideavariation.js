@@ -1,7 +1,8 @@
 (async function(){
-    
-    var data = await window.getData();
-    var searchIdeas = data.ideas.map(x => x.name).reduce((prev, cur) =>
+    var data = await fetch("Data/IdeaVariation.json").then(x => x.json());
+    var anbennarData = await fetch("Data/Anbennar.json").then(x => x.json());
+
+    var searchIdeas = data.ideaGroups.map(x => x.type).reduce((prev, cur) =>
         Object.assign({[cur]: false}, prev),
         {});
     window.data = data;
@@ -12,22 +13,20 @@
             "vue-select": VueSelect.VueSelect
         },
         data: {
-            ideas: data.ideas,
+            app: 'anbennar',
+            ideas: data.ideaGroups,
             policies: data.policies,
-            tab: 'idea-groups',
-            exclusiveCategories: ["General", "Imperial", "Ship", "Army", "Government", "Damage", "Centralism", "Religious"],
-            ideaBonuses: data.ideaBonuses.sort(),//.concat(data.policyBonuses)
-            //     .filter((value, i, a) => a.indexOf(value) === i)
-            //     .sort(),
-            policyBonuses: data.policyBonuses.sort(),
+            bonuses: data.bonuses.sort((a,b) => a.typeName > b.typeName),
+            exclusiveCategories: data.exclusiveCategories,
+            tab: 'countries-page',
             selectedPolicy: {},
             search: {
-                ideaBonus: '',
-                ideaExclusiveCategory: '',
-                policyBonus: '',
+                ideaBonus: null,
+                ideaExclusiveCategory: null,
+                policyBonus: null,
                 ideas: searchIdeas,
-                ideaMonarch: '',
-                policyMonarch: '',
+                ideaMonarch: null,
+                policyMonarch: null,
             },
             navigationBuffer: [],
             planner: {
@@ -35,6 +34,14 @@
                 selectedPolicy: '',
                 ideaGroups: [],
                 policies: []
+            },
+            anbennar:{
+                countries: anbennarData.countries.sort((a,b) => a.name > b.name),
+                bonuses: anbennarData.bonuses.sort((a,b) => a.typeName > b.typeName),
+                search: {
+                    countryName: '',
+                    countryBonus: null
+                }
             }
         },
         methods:{
@@ -59,28 +66,29 @@
             },
             toggleIdeaMonarch(val){
                 this.search.ideaMonarch = this.search.ideaMonarch === val
-                    ? ''
+                    ? null
                     : val;
             },
             togglePolicyMonarch(val){
                 this.search.policyMonarch = this.search.policyMonarch === val
-                    ? ''
-                    : val;
-            },
-            displayBonusName(val){
-                return val.indexOf("__") > -1
-                    ? val.split('__')[0]
+                    ? null
                     : val;
             },
             navigateToTab(tab){
                 this.tab = tab;
-                this.navigationBuffer.push({tab});
+                var app = this.app;
+                this.navigationBuffer.push({tab, app});
+            },
+            navigateToApp(app, tab){
+                this.tab = tab;
+                this.app = app;
+                this.navigationBuffer.push({tab, app});
             },
             navigateToPolicy(policy){
                 this.selectedPolicy = policy;
                 this.tab = "policy";
-
-                this.navigationBuffer.push({tab: this.tab, selectedPolicy: policy});
+                var app = this.app;
+                this.navigationBuffer.push({tab: this.tab, selectedPolicy: policy, app});
             },
             navigateBack(){
                 var current = this.navigationBuffer.pop();
@@ -89,6 +97,7 @@
                     this.selectedPolicy = last.selectedPolicy;
                 }
                 this.tab = last.tab;
+                this.app = last.app;
             },
             policyByName(policyName){
                 return this.policies.find(x => x.name === policyName);
@@ -97,18 +106,18 @@
                 if(!this.planner.selectedIdeaGroup){
                     return;
                 }
-                this.planner.ideaGroups.push(this.planner.selectedIdeaGroup.name);
+                this.planner.ideaGroups.push(this.planner.selectedIdeaGroup.type);
                 this.planner.selectedIdeaGroup = null;
             },
             plannerAddSelectedPolicy(){
                 if(!this.planner.selectedPolicy){
                     return;
                 }
-                this.planner.policies.push(this.planner.selectedPolicy.displayAllow);
+                this.planner.policies.push(this.planner.selectedPolicy.displayName);
                 this.planner.selectedPolicy = null;
             },
             filteredPlannerIdeas(monarch){
-                var ideaGroups = this.ideas.filter(x => this.planner.ideaGroups.indexOf(x.name) > -1);
+                var ideaGroups = this.ideas.filter(x => this.planner.ideaGroups.indexOf(x.type) > -1);
                 return ideaGroups.filter(x => x.category === monarch).map(x => x.name);
             },
             removePlannerIdeaGroup(idea){
@@ -134,34 +143,46 @@
                 }).map(x => x.displayAllow);
             },
             filteredPlannerPolicies(monarch){
-                var ideaGroups = this.policies.filter(x => this.planner.policies.indexOf(x.displayAllow) > -1);
-                return ideaGroups.filter(x => x.monarchPower === monarch).map(x => x.displayAllow);
+                var ideaGroups = this.policies.filter(x => this.planner.policies.indexOf(x.displayName) > -1);
+                return ideaGroups.filter(x => x.monarchPower === monarch).map(x => x.displayName);
             },
             removePlannerPolicy(policy){
                 this.planner.policies = this.planner.policies.filter(x => x !== policy);
             }
         },
         computed:{
+            filteredCountries: function(){
+                var searchName = this.anbennar.search.countryName;
+                var searchBonus = this.anbennar.search.countryBonus;
+                var countries = this.anbennar.countries;
+                if(searchBonus !== null){
+                    countries = countries.filter(x => x.ideas.some(y => y.bonuses.some(z => z.type === searchBonus)));
+                }
+                if(searchName.length){
+                    countries = countries.filter(x =>  x.name && x.name.toLowerCase().includes(searchName.toLowerCase())
+                    );
+                }
+                return countries;
+            },
             filteredIdeas: function(){
                 var activeBonusFilter = this.search.ideaBonus;
                 var activeMonarchFilters = this.search
                     .ideaMonarch;
-                    var activeIdeaExclusiveCategory = this.search.ideaExclusiveCategory;
+                var activeIdeaExclusiveCategory = this.search.ideaExclusiveCategory;
                 var ideas = this.ideas;
-                if(activeBonusFilter.length){
+                if(activeBonusFilter){
                     ideas = 
                         ideas.filter(idea =>{
-                            var bonusNames = idea.bonuses.map(x => Object.getOwnPropertyNames(x.bonus).map(this.displayBonusName))
-                                .flat();
-                            return bonusNames.indexOf(activeBonusFilter) > -1;
+                            var bonusTypes = idea.ideas.map(x => x.bonuses.map(y => y.type)).flat();
+                            return bonusTypes.indexOf(activeBonusFilter) > -1;
                         })
                 }
-                if(activeIdeaExclusiveCategory.length){
+                if(activeIdeaExclusiveCategory !== null){
                     ideas = 
                         ideas.filter(x => x.exclusiveCategory === activeIdeaExclusiveCategory);
                         
                 }
-                if(activeMonarchFilters){
+                if(activeMonarchFilters !== null){
                     ideas = ideas.filter(x => x.category == activeMonarchFilters);
                 }
                 return ideas.sort((a, b) => a.name > b.name );
@@ -173,12 +194,12 @@
                 var activeIdeaGroups = this.ideas.map(x => x.name)
                     .filter(x => this.search.ideas[x]);
                 var policies = this.policies;
-                if(activeBonusFilter.length){
+                if(activeBonusFilter !== null){
                     policies = 
-                        policies.filter(x => x.bonuses.some(x => x.name == activeBonusFilter));
+                        policies.filter(x => x.bonuses.some(x => x.type == activeBonusFilter));
                       
                 }
-                if(activeMonarchFilters){
+                if(activeMonarchFilters !== null){
                     policies = policies.filter(x => x.monarchPower == activeMonarchFilters);
                 }
                 return policies;
