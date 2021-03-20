@@ -6,12 +6,8 @@
         Object.assign({[cur]: false}, prev),
         {});
     window.data = data;
-    Vue.component('v-select', VueSelect.VueSelect);
     var app = new Vue({
         el: '#app',
-        components:{
-            "vue-select": VueSelect.VueSelect
-        },
         data: {
             app: 'anbennar',
             ideas: data.ideaGroups,

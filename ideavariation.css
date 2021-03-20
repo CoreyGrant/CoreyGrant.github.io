@@ -93,6 +93,11 @@ ul{
 .idea-group-top{
     padding: 10px;
 }
+.idea-group-top h4{
+    background-color: #333333;
+    padding: 6px;
+    border-radius: 5px;
+}
 .sideways{
     transform: rotate(90deg);
     font-size: 0.7rem;
