@@ -250,7 +250,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "3.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -585,6 +585,26 @@
               "value": "-1"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(32,63,123)",
+          "red": 32,
+          "green": 63,
+          "blue": 123
+        },
+        {
+          "rgb": "rgb(29,30,30)",
+          "red": 29,
+          "green": 30,
+          "blue": 30
+        },
+        {
+          "rgb": "rgb(91,80,61)",
+          "red": 91,
+          "green": 80,
+          "blue": 61
         }
       ]
     },
@@ -1214,6 +1234,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(188,188,188)",
+          "red": 188,
+          "green": 188,
+          "blue": 188
+        },
+        {
+          "rgb": "rgb(31,184,201)",
+          "red": 31,
+          "green": 184,
+          "blue": 201
+        },
+        {
+          "rgb": "rgb(77,77,77)",
+          "red": 77,
+          "green": 77,
+          "blue": 77
+        }
       ]
     },
     {
@@ -1516,6 +1556,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(237,28,36)",
+          "red": 237,
+          "green": 28,
+          "blue": 36
+        },
+        {
+          "rgb": "rgb(164,255,77)",
+          "red": 164,
+          "green": 255,
+          "blue": 77
+        },
+        {
+          "rgb": "rgb(237,28,36)",
+          "red": 237,
+          "green": 28,
+          "blue": 36
+        }
       ]
     },
     {
@@ -1784,7 +1844,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "3.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -1833,6 +1893,26 @@
               "value": "0.2"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(252,232,125)",
+          "red": 252,
+          "green": 232,
+          "blue": 125
+        },
+        {
+          "rgb": "rgb(88,88,88)",
+          "red": 88,
+          "green": 88,
+          "blue": 88
+        },
+        {
+          "rgb": "rgb(250,228,183)",
+          "red": 250,
+          "green": 228,
+          "blue": 183
         }
       ]
     },
@@ -2159,6 +2239,26 @@
               "value": "0.2"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(24,88,30)",
+          "red": 24,
+          "green": 88,
+          "blue": 30
+        },
+        {
+          "rgb": "rgb(226,230,232)",
+          "red": 226,
+          "green": 230,
+          "blue": 232
+        },
+        {
+          "rgb": "rgb(24,88,30)",
+          "red": 24,
+          "green": 88,
+          "blue": 30
         }
       ]
     },
@@ -2632,6 +2732,26 @@
               "value": "0.1"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(99,99,99)",
+          "red": 99,
+          "green": 99,
+          "blue": 99
+        },
+        {
+          "rgb": "rgb(226,225,196)",
+          "red": 226,
+          "green": 225,
+          "blue": 196
+        },
+        {
+          "rgb": "rgb(38,87,167)",
+          "red": 38,
+          "green": 87,
+          "blue": 167
         }
       ]
     },
@@ -3245,6 +3365,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(255,222,23)",
+          "red": 255,
+          "green": 222,
+          "blue": 23
+        },
+        {
+          "rgb": "rgb(65,64,66)",
+          "red": 65,
+          "green": 64,
+          "blue": 66
+        },
+        {
+          "rgb": "rgb(0,166,81)",
+          "red": 0,
+          "green": 166,
+          "blue": 81
+        }
       ]
     },
     {
@@ -3383,6 +3523,26 @@
               "value": "0.15"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(151,172,196)",
+          "red": 151,
+          "green": 172,
+          "blue": 196
+        },
+        {
+          "rgb": "rgb(251,252,252)",
+          "red": 251,
+          "green": 252,
+          "blue": 252
+        },
+        {
+          "rgb": "rgb(252,230,156)",
+          "red": 252,
+          "green": 230,
+          "blue": 156
         }
       ]
     },
@@ -5956,7 +6116,7 @@
             },
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "1.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -5999,6 +6159,26 @@
               "value": "0.25"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(230,33,33)",
+          "red": 230,
+          "green": 33,
+          "blue": 33
+        },
+        {
+          "rgb": "rgb(242,242,242)",
+          "red": 242,
+          "green": 242,
+          "blue": 242
+        },
+        {
+          "rgb": "rgb(229,103,90)",
+          "red": 229,
+          "green": 103,
+          "blue": 90
         }
       ]
     },
@@ -6807,6 +6987,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(26,126,141)",
+          "red": 26,
+          "green": 126,
+          "blue": 141
+        },
+        {
+          "rgb": "rgb(222,222,222)",
+          "red": 222,
+          "green": 222,
+          "blue": 222
+        },
+        {
+          "rgb": "rgb(56,56,56)",
+          "red": 56,
+          "green": 56,
+          "blue": 56
+        }
       ]
     },
     {
@@ -7450,6 +7650,26 @@
               "value": "0.20"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(43,57,144)",
+          "red": 43,
+          "green": 57,
+          "blue": 144
+        },
+        {
+          "rgb": "rgb(75,131,61)",
+          "red": 75,
+          "green": 131,
+          "blue": 61
+        },
+        {
+          "rgb": "rgb(218,28,92)",
+          "red": 218,
+          "green": 28,
+          "blue": 92
         }
       ]
     },
@@ -9001,6 +9221,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(241,90,40)",
+          "red": 241,
+          "green": 90,
+          "blue": 40
+        },
+        {
+          "rgb": "rgb(255,178,95)",
+          "red": 255,
+          "green": 178,
+          "blue": 95
+        },
+        {
+          "rgb": "rgb(255,255,255)",
+          "red": 255,
+          "green": 255,
+          "blue": 255
+        }
       ]
     },
     {
@@ -9158,7 +9398,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "2.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -9466,6 +9706,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(187,156,188)",
+          "red": 187,
+          "green": 156,
+          "blue": 188
+        },
+        {
+          "rgb": "rgb(49,108,179)",
+          "red": 49,
+          "green": 108,
+          "blue": 179
+        },
+        {
+          "rgb": "rgb(113,46,102)",
+          "red": 113,
+          "green": 46,
+          "blue": 102
+        }
       ]
     },
     {
@@ -9645,6 +9905,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(247,179,209)",
+          "red": 247,
+          "green": 179,
+          "blue": 209
+        },
+        {
+          "rgb": "rgb(159,207,111)",
+          "red": 159,
+          "green": 207,
+          "blue": 111
+        },
+        {
+          "rgb": "rgb(188,77,138)",
+          "red": 188,
+          "green": 77,
+          "blue": 138
+        }
       ]
     },
     {
@@ -9799,6 +10079,26 @@
               "value": "0.05"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(177,177,177)",
+          "red": 177,
+          "green": 177,
+          "blue": 177
+        },
+        {
+          "rgb": "rgb(69,69,69)",
+          "red": 69,
+          "green": 69,
+          "blue": 69
+        },
+        {
+          "rgb": "rgb(193,216,224)",
+          "red": 193,
+          "green": 216,
+          "blue": 224
         }
       ]
     },
@@ -10443,6 +10743,26 @@
               "value": "0.15"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(237,200,83)",
+          "red": 237,
+          "green": 200,
+          "blue": 83
+        },
+        {
+          "rgb": "rgb(66,66,66)",
+          "red": 66,
+          "green": 66,
+          "blue": 66
+        },
+        {
+          "rgb": "rgb(237,190,241)",
+          "red": 237,
+          "green": 190,
+          "blue": 241
         }
       ]
     },
@@ -13321,7 +13641,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "2.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -13490,7 +13810,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "1.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -15650,6 +15970,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(213,133,26)",
+          "red": 213,
+          "green": 133,
+          "blue": 26
+        },
+        {
+          "rgb": "rgb(153,118,93)",
+          "red": 153,
+          "green": 118,
+          "blue": 93
+        },
+        {
+          "rgb": "rgb(255,255,250)",
+          "red": 255,
+          "green": 255,
+          "blue": 250
+        }
       ]
     },
     {
@@ -16695,6 +17035,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(64,165,212)",
+          "red": 64,
+          "green": 165,
+          "blue": 212
+        },
+        {
+          "rgb": "rgb(247,243,133)",
+          "red": 247,
+          "green": 243,
+          "blue": 133
+        },
+        {
+          "rgb": "rgb(255,255,250)",
+          "red": 255,
+          "green": 255,
+          "blue": 250
+        }
       ]
     },
     {
@@ -17012,6 +17372,26 @@
               "value": "0.1"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(237,28,36)",
+          "red": 237,
+          "green": 28,
+          "blue": 36
+        },
+        {
+          "rgb": "rgb(75,131,61)",
+          "red": 75,
+          "green": 131,
+          "blue": 61
+        },
+        {
+          "rgb": "rgb(168,128,186)",
+          "red": 168,
+          "green": 128,
+          "blue": 186
         }
       ]
     },
@@ -17616,6 +17996,26 @@
               "value": "-0.10"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(193,216,224)",
+          "red": 193,
+          "green": 216,
+          "blue": 224
+        },
+        {
+          "rgb": "rgb(157,255,255)",
+          "red": 157,
+          "green": 255,
+          "blue": 255
+        },
+        {
+          "rgb": "rgb(55,55,55)",
+          "red": 55,
+          "green": 55,
+          "blue": 55
         }
       ]
     },
@@ -19771,6 +20171,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(237,190,241)",
+          "red": 237,
+          "green": 190,
+          "blue": 241
+        },
+        {
+          "rgb": "rgb(167,90,148)",
+          "red": 167,
+          "green": 90,
+          "blue": 148
+        },
+        {
+          "rgb": "rgb(87,87,87)",
+          "red": 87,
+          "green": 87,
+          "blue": 87
+        }
       ]
     },
     {
@@ -20546,6 +20966,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(36,102,177)",
+          "red": 36,
+          "green": 102,
+          "blue": 177
+        },
+        {
+          "rgb": "rgb(241,242,242)",
+          "red": 241,
+          "green": 242,
+          "blue": 242
+        },
+        {
+          "rgb": "rgb(255,223,132)",
+          "red": 255,
+          "green": 223,
+          "blue": 132
+        }
       ]
     },
     {
@@ -21189,7 +21629,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "1.50%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -22360,7 +22800,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "3.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -22632,6 +23072,26 @@
               "value": "0.2"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(193,255,120)",
+          "red": 193,
+          "green": 255,
+          "blue": 120
+        },
+        {
+          "rgb": "rgb(255,204,28)",
+          "red": 255,
+          "green": 204,
+          "blue": 28
+        },
+        {
+          "rgb": "rgb(59,54,149)",
+          "red": 59,
+          "green": 54,
+          "blue": 149
         }
       ]
     },
@@ -24632,6 +25092,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(164,29,33)",
+          "red": 164,
+          "green": 29,
+          "blue": 33
+        },
+        {
+          "rgb": "rgb(75,131,61)",
+          "red": 75,
+          "green": 131,
+          "blue": 61
+        },
+        {
+          "rgb": "rgb(209,211,212)",
+          "red": 209,
+          "green": 211,
+          "blue": 212
+        }
       ]
     },
     {
@@ -26470,7 +26950,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "1.50%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,
@@ -27871,6 +28351,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(215,119,176)",
+          "red": 215,
+          "green": 119,
+          "blue": 176
+        },
+        {
+          "rgb": "rgb(254,231,166)",
+          "red": 254,
+          "green": 231,
+          "blue": 166
+        },
+        {
+          "rgb": "rgb(215,119,176)",
+          "red": 215,
+          "green": 119,
+          "blue": 176
+        }
       ]
     },
     {
@@ -28017,6 +28517,26 @@
               "value": "1"
             }
           ]
+        }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(244,246,247)",
+          "red": 244,
+          "green": 246,
+          "blue": 247
+        },
+        {
+          "rgb": "rgb(103,205,237)",
+          "red": 103,
+          "green": 205,
+          "blue": 237
+        },
+        {
+          "rgb": "rgb(189,32,60)",
+          "red": 189,
+          "green": 32,
+          "blue": 60
         }
       ]
     },
@@ -31142,6 +31662,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(159,55,35)",
+          "red": 159,
+          "green": 55,
+          "blue": 35
+        },
+        {
+          "rgb": "rgb(194,181,155)",
+          "red": 194,
+          "green": 181,
+          "blue": 155
+        },
+        {
+          "rgb": "rgb(243,243,244)",
+          "red": 243,
+          "green": 243,
+          "blue": 244
+        }
       ]
     },
     {
@@ -32120,6 +32660,26 @@
             }
           ]
         }
+      ],
+      "colors": [
+        {
+          "rgb": "rgb(28,124,140)",
+          "red": 28,
+          "green": 124,
+          "blue": 140
+        },
+        {
+          "rgb": "rgb(137,28,36)",
+          "red": 137,
+          "green": 28,
+          "blue": 36
+        },
+        {
+          "rgb": "rgb(56,56,56)",
+          "red": 56,
+          "green": 56,
+          "blue": 56
+        }
       ]
     },
     {
@@ -32447,7 +33007,7 @@
           "bonuses": [
             {
               "autoDisplay": false,
-              "displayValue": "0.0",
+              "displayValue": "2.00%",
               "url": "Icons/Bonuses/Missionary_strength.png",
               "typeName": "Missionary strength",
               "type": 81,

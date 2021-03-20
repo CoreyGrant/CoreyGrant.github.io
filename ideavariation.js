@@ -45,6 +45,18 @@
             }
         },
         methods:{
+            getCountryStyle(num, country){
+                if(!country.colors){
+                    return null;
+                }
+                var style = {
+                    "background-color": country.colors[num].rgb,
+                };
+                if(num == 0){
+                    style.color = country.colors[1].rgb;
+                }
+                return style;
+            },
             getAge(allow){
                 return allow.current_age ? `[${allow.current_age}]` : '';
             },
