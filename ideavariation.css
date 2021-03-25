@@ -83,6 +83,16 @@ ul{
     font-size: 0.8rem;
 }
 
+.religions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    font-size: 0.8rem;
+}
+
 .idea-group{
     display: block;
     width: calc(100% - 30px);
@@ -90,6 +100,33 @@ ul{
     border: 1px solid rgba(80, 80, 80, 0.74);
     border-radius: 5px;
 }
+.religion-group {
+    display: block;
+    width: calc(100% - 30px);
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    border-radius: 5px;
+}
+
+.religion-group-top {
+    padding: 10px;
+    padding-left: 0;
+}
+
+.religion {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    border-radius: 5px;
+}
+
 .idea-group-top{
     padding: 10px;
 }
