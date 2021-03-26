@@ -93,12 +93,13 @@ ul{
     font-size: 0.8rem;
 }
 
-.idea-group{
+.idea-group {
     display: block;
     width: calc(100% - 30px);
     margin-top: 15px;
     border: 1px solid rgba(80, 80, 80, 0.74);
     border-radius: 5px;
+    height: min-content;
 }
 .religion-group {
     display: block;
@@ -131,9 +132,7 @@ ul{
     padding: 10px;
 }
 .idea-group-top h4{
-    background-color: #333333;
-    padding: 6px;
-    border-radius: 5px;
+    
 }
 .sideways{
     transform: rotate(90deg);
@@ -161,6 +160,20 @@ ul{
     background-color: #333333;
     border-radius: 5px;
     min-height: 60px;
+}
+
+.country-idea-group-bonus {
+    width: calc(20% - 20px) !important;
+    margin: 10px;
+    border-radius: 5px;
+    min-height: 60px;
+    background-color: #333333;
+}
+
+.country-name h4 {
+    
+    font-size: 28px;
+    text-align: center;
 }
 
 .bonus-detail{
