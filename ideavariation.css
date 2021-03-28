@@ -3,8 +3,6 @@ html >*{
     color: #d4d4d4 !important;
     background-color: #1e1e1e !important;
     font-family: 'Roboto', sans-serif;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 p, ul, h1, h2, h3, h4, h5, h6{
     margin-bottom: 2px;
@@ -20,11 +18,12 @@ h4{
 
 #app{
     height: 100%;
-    padding: 15px;
 }
 
 .app-container{
-    height: calc(100% - 60px);
+    height: 100%;
+    padding: 15px;
+    padding-top: 95px;
 }
 
 .policies{
@@ -212,8 +211,9 @@ ul{
 .monarch-power-input img{
     height: 24px;
     width: 24px;
-    border: 3px solid red;
+    border: 2px solid red;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 .monarch-power-input img.active{
@@ -269,44 +269,22 @@ ul{
 }
 
 .planner-idea-groups{
-    width: 25%;
+    width: 30%;
     height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
 }
-.planner-idea-group-add{
-    height: 10%;
-}
-.planner-idea-group-add label{
-    margin-right: 5px;
-}
-.planner-idea-group-add .v-select{
-    width: calc(100% - 150px);
-}
-.planner-idea-group-add-confirm{
-    font-size: 24px;
-    margin-left: 5px;
-}
-
-.planner-policies-add{
-    height: 10%;
-}
-.planner-policies-add label{
-    margin-right: 5px;
-}
-.planner-policies-add .v-select{
-    width: calc(100% - 150px);
-}
-.planner-policies-add-confirm{
-    font-size: 24px;
-    margin-left: 5px;
-}
 
 .planner-policies{
-    width: 45%;
+    width: 70%;
     height: 100%;
     padding: 10px;
+}
+
+.planner-policies-add, .planner-idea-groups-add {
+    height: 50%;
+    width: 100%;
 }
 .planner-bonuses{
     width: 30%;
@@ -314,13 +292,43 @@ ul{
     padding: 10px;
 }
 
+.planner-idea-group-selection{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: start;
+}
+
+.planner-policy-selection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.planner-idea-group {
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.planner-policy .policy {
+    width: auto;
+}
+
 .planner-policies-show{
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 50%;
 }
 .planner-policies-show > div{
-    height: 30%;
+    height: 33%;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -358,4 +366,81 @@ ul{
 
 .disabled{
     cursor: not-allowed !important;
+}
+
+.app-header {
+    height: 60px;
+    padding: 4px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    background-color: #333333;
+    z-index: 1000;
+}
+
+.vertical-divider{
+    height: 100%;
+    width: 0;
+    border-left: 1px solid grey;
+}
+.app-header-icon{
+    width: 52px;
+    height: 100%;
+}
+.app-navigation{
+    height: 100%;
+    width: fit-content();
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.main-route-selection, .child-route-selection{
+    width: 250px;
+    height: 56px;
+}
+.dropdown-toggle{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.dropdown-menu {
+    top:calc(100% - 1px);
+    width: 250px;
+    min-width: 250px;
+    height: fit-content();
+    background-color: transparent;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+    color: #d4d4d4 !important;
+}
+.dropdown-menu ul{
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+}
+
+    .dropdown-menu li {
+        width: 250px;
+        height: 60px;
+        padding: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        background-color: #333333;
+        color: #d4d4d4 !important;
+        z-index: 1000;
+        position: relative;
+    }
+.dropdown-menu li.active {
+    background-color: #444444;
+}
+.dropdown-menu li:not(.active):hover {
+    background-color: #545454;
+    cursor: pointer;
 }
