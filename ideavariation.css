@@ -18,6 +18,7 @@ h4{
 
 #app{
     height: 100%;
+    overflow: hidden;
 }
 
 .app-container{
@@ -181,7 +182,7 @@ ul{
 
 .policies-page, .idea-groups-page, .policy-page, .idea-group-page, .planner-page, .countries-page{
     width: 100%;
-    height: calc(100% - 100px);
+    height: calc(100% - 49px);
 } 
 
 ul{
@@ -269,21 +270,22 @@ ul{
 }
 
 .planner-idea-groups{
-    width: 30%;
+    width: 40%;
     height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
-.planner-policies{
-    width: 70%;
+.planner-policies {
+    width: 60%;
     height: 100%;
     padding: 10px;
+    position: relative;
 }
 
 .planner-policies-add, .planner-idea-groups-add {
-    height: 50%;
     width: 100%;
 }
 .planner-bonuses{
@@ -294,20 +296,23 @@ ul{
 
 .planner-idea-group-selection{
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
-    align-items: start;
-}
-
-.planner-policy-selection {
-    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: start;
+    align-content: space-between;
+}
+
+.planner-policy-selection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    overflow-y: auto;
 }
 
 .planner-idea-group {
@@ -320,26 +325,50 @@ ul{
 
 .planner-policy .policy {
     width: auto;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.planner-policy .policy img{
+    height: 24px;
+    width: 24px;
+}
+
+.planner-policy .policy h4 {
+    font-size: 16px;
 }
 
 .planner-policies-show{
     display: flex;
     flex-direction: column;
-    height: 50%;
-}
-.planner-policies-show > div{
-    height: 33%;
     width: 100%;
+}
+.planner-policies-show > div {
+    height: 33%;
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: row;
-    align-content: flex-start;
-    flex-wrap:wrap;
+    align-items: center;
+    justify-content: start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 .planner-choice{
     border: 1px solid rgba(80, 80, 80, 0.74);
     padding: 4px;
     margin: 4px;
+}
+
+.planner-vertical-label {
+    height: 100%;
+    width: 30px;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .planner-policies-show img{
@@ -349,16 +378,21 @@ ul{
 .planner-idea-group-show{
     display: flex;
     flex-direction: column;
-    height: 90%;
-}
-.planner-idea-group-show > div{
-    height: 30%;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: flex-start;
-    flex-wrap:wrap;
 }
+    .planner-idea-group-show > div {
+        height: 33%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        
+    }
+
+    .planner-idea-group-show .planner-idea-group {
+        font-size: 16px !important;
+    }
 
 .planner-idea-group-show img{
     align-self:center;
