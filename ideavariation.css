@@ -27,17 +27,7 @@ h4{
     padding-top: 70px;
 }
 
-.policies{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:start;
-    align-content: flex-start;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: calc(100%-60px);
-    font-size: 0.8rem;
-}
+
 .active{
     font-weight: bold;
     font-size: 1rem;
@@ -76,14 +66,31 @@ ul{
     cursor: pointer;
 }
 
-.idea-groups{
+.scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
+}
+
+.policy-monarch-power{
+    height: 28px;
+    width: 28px;
+}
+
+.idea-groups, .countries, .policies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: calc(100% - 60px);
     font-size: 0.8rem;
+}
+
+.policies .scroll-container{
+    
 }
 
 .religions {
