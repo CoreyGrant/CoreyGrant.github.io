@@ -93,6 +93,8 @@ ul{
     
 }
 
+
+
 .religions {
     display: flex;
     flex-direction: row;
@@ -194,10 +196,20 @@ ul{
 .idea-group-page,
 .planner-page,
 .countries-page,
-.religions-page{
+.religions-page,
+.section-index,
+.index-page {
     width: 100%;
     height: calc(100% - 48px);
-} 
+}
+.mod-list {
+    display: flex;
+    flex-direction: row;
+}
+.mod-index {
+    border: 1px solid rgba(80, 80, 80, 0.74);
+    padding: 8px;
+}
 
 ul{
     padding-left: 4px;
